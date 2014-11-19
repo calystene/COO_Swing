@@ -78,11 +78,10 @@ public class CreerCreditLignePanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object o = e.getSource();
 
-		if (o == btnCreer
-				&& textUser.getText()!=""
-				&& textNomCredit.getText()!=""
-				&& textIdLigne.getText()!=""
-				&& textMontant.getText()!="") {
+		if (o == btnCreer && textUser.getText().length() != 0
+				&& textNomCredit.getText().length() != 0
+				&& textIdLigne.getText().length() != 0
+				&& textMontant.getText().length() != 0) {
 			String nomUser = textUser.getText();
 			String nomCredit = textNomCredit.getText();
 			int idLigne = Integer.parseInt(textIdLigne.getText());
@@ -91,10 +90,12 @@ public class CreerCreditLignePanel extends JPanel implements ActionListener {
 			try {
 				metier.creer(nomUser, nomCredit, idLigne, montant);
 			} catch (Exception e1) {
-				
+
 				// Création d'un JDialog pour afficher message d'erreur
-				JDialog error = new JDialog(frame, "Erreur création crédit", true);
-				JLabel msgError = new JLabel("Une erreur c'est produite lors de la création du crédit");
+				JDialog error = new JDialog(frame, "Erreur création crédit",
+						true);
+				JLabel msgError = new JLabel(
+						"Une erreur c'est produite lors de la création du crédit");
 				msgError.setForeground(Color.RED);
 				error.setLocationRelativeTo(frame);
 				error.getContentPane().add(msgError, BorderLayout.CENTER);
