@@ -1,6 +1,7 @@
 package metier;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import data.Depense;
 import data.FactoryLigneCredit;
@@ -19,6 +20,10 @@ public class ExaminerLigneCredit{
 		return FactoryLigneCredit.getInstance().rechercheLigneCredit(nomUser, idLigneCredit);
 	}
 	
+	public ArrayList<LigneCredit> rechercherListe (String user) {
+		return FactoryLigneCredit.getInstance().rechercherListeCredit(nomUser);
+	}
+	
 	public int getMInitialLigneCredit() {
 		return FactoryLigneCredit.getInstance().rechercheLigneCredit(nomUser, idLigneCredit).getMontant();
 	}
@@ -26,13 +31,6 @@ public class ExaminerLigneCredit{
 	public int getMReelLigneCredit() {
 		LigneCredit lc = getLigneCredit();
 		int montant = FactoryLigneCredit.getInstance().rechercheLigneCredit(nomUser, idLigneCredit).getMontant();
-		try {
-			createUser.creer("pierard");
-			createLigne.creer("pierard","test", 1, 300);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		for(Depense d : lc.getDepenses()) {
 			montant -= d.getMontant();

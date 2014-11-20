@@ -1,6 +1,8 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class FactoryLigneCredit {
 	private HashMap<String,LigneCredit> lesCredits;
@@ -30,5 +32,18 @@ public class FactoryLigneCredit {
 	
 	public LigneCredit rechercheLigneCredit(String nomUser, int id) {
 		return lesCredits.get(nomUser+id);
+	}
+	
+	public ArrayList<LigneCredit> rechercherListeCredit (String nomUser) {
+		ArrayList<LigneCredit> result = new ArrayList<LigneCredit>();
+		Iterator it = lesCredits.keySet().iterator();
+		
+		while(it.hasNext()) {
+			LigneCredit lc = (LigneCredit) it.next();
+			if(lc.getNomPersonne().equals(nomUser))
+				result.add(lc);
+		}
+		
+		return result;
 	}
 }

@@ -78,6 +78,8 @@ public class CreateUserPanel extends JPanel implements ActionListener{
 		HashMap<String,Personne> collect = FactoryPersonne.getInstance().lister();
 		Iterator it = collect.keySet().iterator();
 		
+		listeUser.removeAllItems();
+		
 		while(it.hasNext()) {
 			listeUser.addItem(it.next());
 		}
